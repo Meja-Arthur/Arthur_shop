@@ -1,12 +1,20 @@
 from django.urls import path
-from .views import item_list, fashion, electronics, jewellery
+from . views import (
+    HomeView,
+    
+)
+
+
+
 app_name = 'core'
 
 urlpatterns = [
-    path('', item_list, name='item-list'),
-    path('fashion/', fashion, name='fashion'),
-    path('electronics/', electronics, name='electronics'),
-    path('jewellery/', jewellery, name='jewellery'),
+    path('', HomeView.as_view(), name='index_home'),
+    
+    #path('fashion/', views.fashion, name='fashion'),
+    #path('electronics/', views.electronics, name='electronics'),
+    #path('jewellery/', views.jewellery, name='jewellery'),
+    
     
 ]
 

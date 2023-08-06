@@ -607,6 +607,15 @@ a:hover {
     display: flex;
 }
 
+.label {
+
+    color:red;
+    font-size: 16px;
+    background-color: transparent;
+    font-weight: bold;
+    width: 100%;
+
+}
 .buy_bt {
     float: left;
     width: 100%;
