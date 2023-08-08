@@ -3,13 +3,15 @@ from django.views.generic import ListView, DetailView
 from .models import Item
 
 # Create your views here.
+
 class HomeView(ListView):
     model = Item
     template_name= "index.html"
     
     
-
-
+class ItemDetailView(DetailView):
+    model = Item
+    template_name = "productdetails.html"
 
 
 
@@ -22,6 +24,10 @@ class HomeView(ListView):
 
 #def jewellery(request):
     #return render(request, 'jewellery.html')
+    
+    
+    
+ 
 
 
 

@@ -233,6 +233,7 @@ button {
     clip-path: polygon(0 0, 100% 0, 96% 100%, 3% 100%);
     height: auto;
     padding: 10px 0px;
+    margin-bottom: 15px;
 }
 
 .custom_menu {
@@ -287,6 +288,7 @@ button {
 /* header section start */
 
 .header_section {
+    
     width: 100%;
     display: flex;
 }
@@ -558,7 +560,7 @@ a:hover {
 
 .fashion_taital {
     width: 100%;
-    font-size: 40px;
+    font-size: 30px;
     color: #30302e;
     text-align: center;
     font-weight: bold;
@@ -598,7 +600,7 @@ a:hover {
 .tshirt_img {
     width: 100%;
     text-align: center;
-    margin: 50px 0px;
+    margin-top: 5px;
     min-height: 370px;
 }
 

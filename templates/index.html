@@ -1,8 +1,9 @@
+   
    {% extends "base.html" %}
-    {% load static %}
+      {% load static %}
 
    {% block head_title %}
-        Issa Shop
+      Issa Shop
    {% endblock %}
 
 
@@ -31,7 +32,7 @@
                               </div>
                               
                               <div class="btn_main">
-                                 <div class="buy_bt"><a href="#">Buy Now</a></div>
+                                 <div class="buy_bt"><a href="{{ item.get_absolute_url }}">Buy Now</a></div>
                                  <span class="label">New</span>
                                  <div class="seemore_bt"><a href="#">See More</a></div>
                               </div>
