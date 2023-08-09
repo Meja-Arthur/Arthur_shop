@@ -1,0 +1,51 @@
+
+
+{% if messages %}
+    <div class="mt-10 mb-1 px-6 alert-primary">
+        {% for message in messages %}
+
+        <div class=" alert " role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+
+
+    </div>
+{% endif %}
+
+<!--
+    style="background-color: #fff5e6; border-color: #ffa500; color: #ffa500;"
+    {% if messages %}
+    <div class="message-container mt-2 px-2">
+        {% for message in messages %}
+        <div class="alert alert-warning alert-dismissible fade show py-1 px-2 rounded-lg mb-1" role="alert">
+            {{ message }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        {% endfor %}
+    </div>
+{% endif %}
+
+-->
+
+
+
+
+
+<!--<div class="mt-4 px-4">
+    {% if messages %}
+        {% for message in messages %}
+        <div class="bg-yellow-100 text-yellow-600 border border-yellow-400 py-1.5 rounded-lg mb-2 flex items-center">
+            <span class="flex-grow px-2">{{ message }}</span>
+            <button type="button" class="text-yellow-600 hover:text-yellow-800 focus:outline-none ml-2" aria-label="Close">
+                &#x2715;
+            </button>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>-->

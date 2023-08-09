@@ -17,6 +17,11 @@
  <meta name="author" content="">
  <!--Tailwindcss-->
  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+ <!--closing of the message in the navbar -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
  <!-- bootstrap css -->
  <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.min.css' %}">
@@ -43,97 +48,105 @@
 </head>
 
 <body>
-<div class="banner_bg_main" style="margin-bottom: 10x;">
-
-    <!-- header top section start -->
-    <div class="container">
-       <div class="header_section_top">
-          <div class="row">
-             <div class="col-sm-12">
-                <div class="custom_menu">
-                   <ul>
-                      <li><a href="/productdetails">product</a></li>
-                      <li><a href="/index_home">Home</a></li>
-                      <li><a href="/fashion">Fashion</a></li>
-                      <li><a href="/electronics">Electronics</a></li>
-                      <li><a href="/jewellery">Jewellery</a></li>
-                   </ul>
-                </div>
-             </div>
-          </div>
-       </div>
-    </div>
-
-    <div class="header_section" style="margin-bottom:20px;">
+    <div class="banner_bg_main" style="margin-bottom: 10x;">
+        <!-- header top section start -->
         <div class="container">
-           <div class="containt_main">
-
-              <div id="mySidenav" class="sidenav">
-                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                 <a href="/">Home</a>
-                 <a href="/fashion">Fashion</a>
-                 <a href="/electronics">Electronic</a>
-                 <a href="/jewellery">Jewellery</a>
-              </div>
-             <span class="toggle_icon" onclick="openNav()"><img src="{% static 'core/images/toggle-icon2.png' %}"></span>
-             
-             <!--<div class="dropdown">
-                 <button class="btn btn-secondary dropdown-toggle" type="button"
-                  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
-                 </button>
-                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                 </div>
-              </div>-->
-
-              <div class="main">
-                 <!--Search -->
-                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for Items">
-                    <div class="input-group-append">
-                       <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
-                       <i class="fa fa-search"></i>
-                       </button>
-                    </div>
-                 </div>
-              </div>
-
-              <div class="header_box">
-
-                <!--<div class="lang_box ">
-                    <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
-                    <img src="{% static 'core/images/flag-uk.png' %}" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
-                    </a>
-                    <div class="dropdown-menu ">
-                       <a href="#" class="dropdown-item">
-                       <img src="{% static 'core/images/flag-france.png' %}" class="mr-2" alt="flag">
-                       French
-                       </a>
-                    </div>
-                 </div>-->
-
-                 <div class="login_menu">
+        <div class="header_section_top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_menu">
                     <ul>
-                       <li><a href="#">
-                          <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                          <span class="padding_10">Cart</span></a>
-                       </li>
-                       <li><a href="#">
-                          <i class="fa fa-user" aria-hidden="true"></i>
-                          <span class="padding_10">Login</span></a>
-                       </li>
+                    
+                        <li><a href="/index_home">Home</a></li>
+                        <li><a href="/fashion">Fashion</a></li>
+                        <li><a href="/electronics">Electronics</a></li>
+                        <li><a href="/jewellery">Jewellery</a></li>
                     </ul>
-                 </div>
-
-              </div>
-           </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
+        </div>
 
-</div>  
+        <div class="header_section" style="margin-bottom:20px;">
+            <div class="container">
+            <div class="containt_main">
 
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                    <a href="/">Home</a>
+                    <a href="/fashion">Fashion</a>
+                    <a href="/electronics">Electronic</a>
+                    <a href="/jewellery">Jewellery</a>
+
+                </div>
+                <span class="toggle_icon" onclick="openNav()"><img src="{% static 'core/images/toggle-icon2.png' %}"></span>
+                
+                <!--<div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button"
+                    id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">All Category 
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </div>-->
+
+                <div class="main">
+                    <!--Search -->
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search for Items">
+                        <div class="input-group-append">
+                        <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                        <i class="fa fa-search"></i>
+                        </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="header_box">
+
+                    <!--<div class="lang_box ">
+                        <a href="#" title="Language" class="nav-link" data-toggle="dropdown" aria-expanded="true">
+                        <img src="{% static 'core/images/flag-uk.png' %}" alt="flag" class="mr-2 " title="United Kingdom"> English <i class="fa fa-angle-down ml-2" aria-hidden="true"></i>
+                        </a>
+                        <div class="dropdown-menu ">
+                        <a href="#" class="dropdown-item">
+                        <img src="{% static 'core/images/flag-france.png' %}" class="mr-2" alt="flag">
+                        French
+                        </a>
+                        </div>
+                    </div>-->
+
+                    <div class="login_menu">
+                        <ul>
+
+                            <li><a href="#">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            <span class="padding_10">Login</span></a>
+                            </li>
+
+                            <li>
+                                <a href="#" class="relative">
+                                <p class="absolute top-[-10] right-3 flex h-2 w-2 items-center
+                                justify-center rounded-full bg-red-500 p-2 text-xs text-white">3</p>
+                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                <span>Cart</span>
+                                </a>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>  
+
+    {% include "message.html"%}
 
     <div class="container mx-auto">
         <div class="container">
@@ -143,8 +156,8 @@
 
                 <div class="col-lg-4 col-sm-4">
                     <div class=" h-30 box_main mt-10 ml-3">
-                        <h4 class="shirt_text">Germany</h4>
-                        <p class="price_text"><span style="color: #262626;">Ksh 150</span></p>
+                        <h4 class="shirt_text"></h4>
+                        <p class="price_text"><span style="color: #262626;"></span></p>
                         <div class="tshirt_img mt-5px"><img src="{% static 'core/images/tshirt-img.png' %}">
                         <h4></h4>
                         </div>
@@ -164,10 +177,27 @@
                         </p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor ut sem id sodales.</p>
                         
-
-                        <button class=" bg-yellow-500 rounded-md py-2 px-4 space-x-2 text-white">
-                            <span>Add to Cart</span>
-                        </button>
+                        <div class="flex justify-between space-x-0">
+                            <a href="{{ object.get_add_to_cart_url }}">
+                                <button type="button" class="
+                                    text-white bg-gradient-to-r from-blue-500 via-blue-600
+                                    to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 
+                                    dark:focus:ring-blue-800 font-medium rounded-lg 
+                                    text-sm px-3 py-1.5 text-center mb-2">
+                                    Add Cart
+                                </button>
+                            </a>
+                            <a href="{{ object.get_remove_from_cart_url }}">
+                                <button type="button" class="
+                                    text-white bg-gradient-to-r
+                                    from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none
+                                    focus:ring-red-300 dark:focus:ring-red-800 font-medium
+                                    rounded-lg text-sm px-3 py-1.5 text-center mb-2">
+                                    Remove Cart
+                                </button>
+                            </a>
+                        </div>
+                         
                     </div>
                 </div>
             </div>

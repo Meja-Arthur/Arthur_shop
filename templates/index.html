@@ -22,12 +22,15 @@
                      <div class="row">
                         
                         {% for item in object_list %}
-                        <div class="col-lg-4 col-sm-4">
+                        <div class="col-lg-4 col-sm-4" >
                            
                            <div class="box_main">
                               <h4 class="shirt_text">{{ item.title }}</h4>
                               <p class="price_text">Price  <span style="color: #262626;">Ksh{{ item.price }}</span></p>
-                              <div class="tshirt_img"><img src="{% static 'core/images/tshirt-img.png' %}">
+                              <div class="tshirt_img">
+                                 <a href="{{ item.get_absolute_url }}">
+                                 <img src="{% static 'core/images/tshirt-img.png' %}">
+                                 </a>
                                  <h4>{{ item.get_category_display }}</h4>
                               </div>
                               
