@@ -4,7 +4,17 @@ from django.views.generic import ListView, DetailView
 from .models import Item,OrderItem, Order
 from django.shortcuts import redirect
 from django.utils import timezone
+from allauth.account.views import LoginView
+from django.urls import reverse_lazy
+
 # Create your views here.
+
+class CustomLoginView(LoginView):
+    # You can customize behavior here if needed
+    template_name = 'account/login.html'
+    
+
+
 
 class HomeView(ListView):
     model = Item

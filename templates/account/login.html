@@ -1,0 +1,111 @@
+
+{% load static %}
+{% load i18n %}
+{% load account socialaccount %}
+{% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <title>Login Page</title>
+</head>
+
+<body style="margin: 0; padding: 1px; font-family: Arial, sans-serif;">
+
+  <nav style="background-color:orange; color: white; display: flex; justify-content: space-between; align-items: center; padding: 10px 20px;">
+    <div style="font-size: 24px;">Logo</div>
+  </nav>
+
+          {% block content %}
+
+            <h1 style="color:black; text-align:center;">LogIn</h1>
+
+            <div style="margin-bottom: 5px; box-sizing: content-box; border: 1px solid #ccc; padding: 15px; background-color: #f9f9f9;" class="col-6 offset-3">
+              {% get_providers as socialaccount_providers %}
+
+              {% if socialaccount_providers %}
+              <p>{% blocktrans with site.name as site_name %}Please sign in with one
+              of your existing third party accounts. Or, <a href="{{ signup_url }}">sign up</a>
+              for a {{ site_name }} account and sign in below:{% endblocktrans %}</p>
+              
+              <div class="socialaccount_ballot">
+              
+                <ul class="socialaccount_providers">
+                  {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                </ul>
+              
+                <div class="login-or">{% trans 'or' %}</div>
+              
+              </div>
+              {% include "socialaccount/snippets/login_extra.html" %}
+              
+              {% else %}
+              <p>Don't have an Account?<a href="{{ signup_url }}">sign up</a></p>
+              {% endif %}
+              
+              <form class="login" method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form| crispy }}
+
+                {% if redirect_field_value %}
+                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+                {% endif %}
+                <a class="btn btn-secondary" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
+              </form>
+            </div>  
+              
+          {% endblock %}
+
+          
+  
+  <footer style="background-color: #333; color: white; text-align: center; margin-top:5px; padding: 10px 0; position: absolute; bottom: 0; width: 100%;">
+    <p>&copy; 2023 Your Company. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

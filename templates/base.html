@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+<head>    
  <!-- basic -->
  <meta charset="utf-8">
  <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,8 @@
  <meta name="viewport" content="initial-scale=1, maximum-scale=1">
  <!-- site metas -->
  <title>{% block head_title %}{% endblock %}</title>
-
+ {% block extra_head %}
+ {% endblock %}
  <meta name="keywords" content="">
  <meta name="description" content="">
  <meta name="author" content="">
@@ -44,19 +46,14 @@
 <body>
 
     {% include "navbar.html" %}
-
-    {% if messages %}
-        
-        {% for message in messages %}
-          <div class="alert alert-{{ message.tags }}" role="alert">
-            {{ message }}
-          </div>
-        {% endfor %}
-        
-    {% endif %}
+    {% include "message.html"%}
 
     {% block content  %}
     {% endblock content %}
+
+    {% block extra_body %}
+    {% endblock %}
+
 
     {% include "footer.html" %}
     {% include "scripts.html" %}
@@ -64,3 +61,4 @@
 </body>
 
 </html>
+

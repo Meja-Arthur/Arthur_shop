@@ -8,7 +8,16 @@ SECRET_KEY = '-05sgp9!deq=q1nltm@^^2cc+v29i(tyybv3v2t77qi66czazj'
 ALLOWED_HOSTS = []
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+LOGIN_REDIRECT_URL = '/'
+#ACCOUNT_LOGIN_TEMPLATE = 'account/login.html'  # Update the path based on your directory structure
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+    # Add your development IP addresses here
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,10 +27,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'core',
+    'debug_toolbar',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-    'core',
+    'crispy_forms',
+    
 ]
 
 #authentication
@@ -38,6 +50,7 @@ SITE_ID = 1
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -93,3 +106,5 @@ if ENVIRONMENT == 'production':
     SECURE_REDIRECT_EXEMPT = []
     SECURE_SSL_REDIRECT = True
     SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+
