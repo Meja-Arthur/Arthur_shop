@@ -1,10 +1,13 @@
 from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View
 from .models import Item,OrderItem, Order
 from django.shortcuts import redirect
 from django.utils import timezone
 from allauth.account.views import LoginView
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 # Create your views here.
@@ -13,18 +16,30 @@ class CustomLoginView(LoginView):
     # You can customize behavior here if needed
     template_name = 'account/login.html'
     
-
-
-
 class HomeView(ListView):
     model = Item
     template_name= "index.html"
     
+class OrderSummeryView(LoginRequiredMixin,View):
+    def get(self, *args, **kwargs):
+        try:
+            order = Order.objects.get(user=self.request.user, ordered=False)
+            context = {
+                'object': order
+            }
+            
+            return render(self.request, 'order_summary.html', context)
+        except ObjectDoesNotExist:
+            messages.error(self.request, "you don't have any active order in the cart.")
+            return redirect("/")
+        
+     
     
 class ItemDetailView(DetailView):
     model = Item
     template_name = "productdetails.html"
 
+@login_required
 def add_to_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_item, created = OrderItem.objects.get_or_create(
@@ -54,7 +69,7 @@ def add_to_cart(request, slug):
         messages.info(request, "Item add to the cart.")
         return redirect("core:product", slug=slug)  
 
-
+@login_required
 def remove_from_cart(request, slug):
     item = get_object_or_404(Item, slug=slug)
     order_qs = Order.objects.filter(user=request.user, ordered=False)

@@ -166,12 +166,18 @@
                         <h4>Product Description</h4>
                         <p>{{ object.get_category_display }}</p>
                         <p>
-                            <span class="">
-                                <del>Ksh 150<del>   
-                            </span><br>
-                            <span>Ksh{{ object.price }}</span>
+                            
+                                {% if object.discount_price %}
+                                    <span class="">
+                                        <del>Ksh{{ object.price }}<del>   
+                                    </span><br>
+                                    <span>Ksh{{ object.discount_price }}</span>
+                                {% else %}
+                                    <span>Ksh{{ object.price }}</span>
+                                {% endif%}
+
                         </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam auctor ut sem id sodales.</p>
+                        <p>{{ object.description }}</p>
                         
                         <div class="flex justify-between space-x-0">
                             <a href="{{ object.get_add_to_cart_url }}">

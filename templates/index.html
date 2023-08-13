@@ -26,7 +26,13 @@
                            
                            <div class="box_main">
                               <h4 class="shirt_text">{{ item.title }}</h4>
-                              <p class="price_text">Price  <span style="color: #262626;">Ksh{{ item.price }}</span></p>
+                              <p class="price_text">Price  <span style="color: #262626;">
+                                 {% if item.discount_price %}
+                                 Ksh{{ item.discount_price }}
+                                 {% else %}
+                                 Ksh{{ item.price }}
+                                 {% endif%}
+                              </span></p>
                               <div class="tshirt_img">
                                  <a href="{{ item.get_absolute_url }}">
                                  <img src="{% static 'core/images/tshirt-img.png' %}">

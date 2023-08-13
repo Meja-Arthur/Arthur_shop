@@ -1,0 +1,152 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+ <!-- basic -->
+<head>
+ 
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <!-- mobile metas -->
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+ <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+ <!-- site metas -->
+ <title>Order_summary </title>
+
+ <meta name="keywords" content="">
+ <meta name="description" content="">
+ <meta name="author" content="">
+ <!--Tailwindcss-->
+ <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+ <!--closing of the message in the navbar -->
+ <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+ <!-- bootstrap css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'core/css/bootstrap.min.css' %}">
+ <!-- style css -->
+ <link rel="stylesheet" type="text/css" href="{% static 'core/css/style.css' %}">
+ <!-- Responsive-->
+ <link rel="stylesheet" href="{% static 'core/css/responsive.css' %}">
+ <!-- fevicon -->
+ <link rel="icon" href="{% static 'core/images/fevicon.png' %}" type="image/gif" />
+ <!-- Scrollbar Custom CSS -->
+ <link rel="stylesheet" href="{% static 'core/css/jquery.mCustomScrollbar.min.css' %}">
+ <!-- Tweaks for older IEs-->
+ <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+ <!-- fonts -->
+ <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+ <!-- font awesome -->
+ <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+ <!--  -->
+ <!-- owl stylesheets -->
+ <link href="https://fonts.googleapis.com/css?family=Great+Vibes|Poppins:400,700&display=swap&subset=latin-ext" rel="stylesheet">
+ <link rel="stylesheet" href="{% static 'core/css/owl.carousel.min.css' %}">
+ <link rel="stylesoeet" href="{% static 'core/css/owl.theme.default.min.css' %}">
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+</head>
+
+<body>
+    <div class="banner_bg_main" style="margin-bottom: 10x;">
+        <!-- header top section start -->
+        <div class="container">
+        <div class="header_section_top">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="custom_menu">
+                    <ul>
+                    
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/fashion">Fashion</a></li>
+                        <li><a href="/electronics">Electronics</a></li>
+                        <li><a href="/jewellery">Jewellery</a></li>
+                    </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="header_section" style="margin-bottom:20px;">
+            <div class="container">
+                    <div class="containt_main">
+
+                        <div id="mySidenav" class="sidenav">
+                            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+
+                            <a href="/">Home</a>
+                            <a href="/fashion">Fashion</a>
+                            <a href="/electronics">Electronic</a>
+                            <a href="/jewellery">Jewellery</a>
+
+                        </div>
+                        <span class="toggle_icon" onclick="openNav()"><img src="{% static 'core/images/toggle-icon2.png' %}"></span>
+                        
+            
+
+                        <div class="main">
+                            <!--Search -->
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for Items">
+                                <div class="input-group-append">
+                                <button class="btn btn-secondary" type="button" style="background-color: #f26522; border-color:#f26522 ">
+                                <i class="fa fa-search"></i>
+                                </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+            </div>
+        </div>
+    </div>  
+
+    {% include "message.html"%}
+
+    <div class="container mx-auto">
+        <div class="container">
+            <h2>Order Summary</h2>
+            <table class="table table-hover" style="margin-bottom: 60px;">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Item title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Total Price</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for order_item in object.items.all %}
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>{{ order_item.item.title }}</td>
+                    <td>{{ order_item.item.price }}</td>
+                    <td>{{ order_item.quantity }}</td>
+                    <td>
+                        {% if order_item.item.discount_price %}
+                            Ksh{{ order_item.get_total_discount_item_price }}
+                            <span class="badge badge-pill badge-primary">( saving Ksh{{ order_item.get_amount_saved }})</span>
+                        {% else %}
+                            Ksh{{ order_item.get_item_price }}
+                        {% endif %}
+
+                    </td>
+                  </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+           
+
+            
+        </div>
+    </div>
+{% include "footer.html" %}
+{% include "scripts.html" %} 
+</body> 
+</html>
